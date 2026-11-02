@@ -1,0 +1,190 @@
+@import url('https://fonts.googleapis.com/css2?family=Noto+Nastaliq+Urdu:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+@import "tailwindcss";
+
+@theme {
+  --font-nastaliq: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', 'Nafees Nastaleeq', 'Alvi Nastaleeq', serif;
+  --font-urdu: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', 'Nafees Nastaleeq', 'Alvi Nastaleeq', serif;
+  --font-sans: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+}
+
+@layer base {
+  /* 1. Default typography for Urdu and RTL */
+  html[dir="rtl"],
+  [dir="rtl"],
+  html[lang="ur"],
+  html[lang="pa"],
+  html[lang="ps"],
+  html[lang="fa"],
+  html[lang="ar"],
+  .font-nastaliq,
+  .font-urdu {
+    font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', 'Nafees Nastaleeq', 'Alvi Nastaleeq', serif !important;
+  }
+
+  html[dir="rtl"] body,
+  html[lang="ur"] body,
+  html[lang="pa"] body,
+  html[lang="ps"] body,
+  html[lang="fa"] body,
+  html[lang="ar"] body {
+    font-family: 'Noto Nastaliq Urdu', 'Jameel Noori Nastaleeq', 'Urdu Typesetting', 'Nafees Nastaleeq', 'Alvi Nastaleeq', serif !important;
+    line-height: 1.85 !important;
+  }
+
+  /* 2. Reset letter-spacing / tracking in Nastaliq to maintain cursive ligatures */
+  html[dir="rtl"] *,
+  html[lang="ur"] * {
+    letter-spacing: normal !important;
+    word-spacing: normal !important;
+  }
+
+  /* 3. Text & Layout Alignment Normalization in RTL and LTR */
+  html[dir="rtl"] {
+    direction: rtl;
+    text-align: right;
+  }
+
+  html[dir="ltr"] {
+    direction: ltr;
+    text-align: left;
+  }
+
+  /* English & LTR Typography (Clean modern Plus Jakarta Sans) */
+  html[dir="ltr"],
+  html[dir="ltr"] body,
+  html[lang="en"] body,
+  html[lang="es"] body,
+  .font-sans {
+    font-family: 'Plus Jakarta Sans', system-ui, -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif !important;
+    line-height: 1.5 !important;
+  }
+
+  html[dir="ltr"] * {
+    letter-spacing: normal;
+  }
+
+  /* In RTL, cancel harsh standard underlines which collide with Nastaliq descenders */
+  html[dir="rtl"] h1.underline,
+  html[dir="rtl"] span.underline,
+  html[dir="rtl"] a.underline {
+    text-decoration: none;
+    border-bottom: 2px solid rgba(52, 211, 153, 0.4);
+    padding-bottom: 2px;
+  }
+
+  /* Button content alignment and vertical breathing room */
+  html[dir="rtl"] button,
+  html[dir="rtl"] [role="button"],
+  html[dir="rtl"] .btn {
+    line-height: 1.6;
+  }
+
+  html[dir="ltr"] button,
+  html[dir="ltr"] [role="button"],
+  html[dir="ltr"] .btn {
+    line-height: 1.35;
+  }
+
+  /* Vertical icon and flex alignment */
+  button svg,
+  .flex svg,
+  .inline-flex svg {
+    flex-shrink: 0;
+  }
+
+  /* 4. Form inputs, selects, and textareas */
+  html[dir="rtl"] input,
+  html[dir="rtl"] select,
+  html[dir="rtl"] textarea {
+    line-height: 1.65;
+    text-align: right;
+  }
+
+  html[dir="ltr"] input,
+  html[dir="ltr"] select,
+  html[dir="ltr"] textarea {
+    line-height: 1.4;
+    text-align: left;
+  }
+
+  /* 5. Headings in Nastaliq vs LTR */
+  html[dir="rtl"] h1,
+  html[dir="rtl"] h2,
+  html[dir="rtl"] h3,
+  html[dir="rtl"] h4,
+  html[dir="rtl"] h5,
+  html[dir="rtl"] h6 {
+    line-height: 1.8;
+  }
+
+  html[dir="ltr"] h1,
+  html[dir="ltr"] h2,
+  html[dir="ltr"] h3,
+  html[dir="ltr"] h4,
+  html[dir="ltr"] h5,
+  html[dir="ltr"] h6 {
+    line-height: 1.25;
+  }
+
+  /* 6. Paragraphs, chat bubbles, and prose */
+  html[dir="rtl"] p,
+  html[dir="rtl"] .chat-text,
+  html[dir="rtl"] .prose {
+    line-height: 1.85;
+  }
+
+  html[dir="ltr"] p,
+  html[dir="ltr"] .chat-text,
+  html[dir="ltr"] .prose {
+    line-height: 1.5;
+  }
+
+  /* Badges & Pills */
+  html[dir="rtl"] .rounded-full,
+  html[dir="rtl"] .rounded-md,
+  html[dir="rtl"] .rounded-lg {
+    line-height: 1.55;
+  }
+
+  html[dir="ltr"] .rounded-full,
+  html[dir="ltr"] .rounded-md,
+  html[dir="ltr"] .rounded-lg {
+    line-height: 1.3;
+  }
+
+  html, body {
+    -webkit-tap-highlight-color: transparent;
+    -webkit-touch-callout: none;
+    overscroll-behavior-y: none;
+    touch-action: manipulation;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    user-select: none;
+    -webkit-user-select: none;
+  }
+
+  /* Safe Area Utilities for iOS & Android */
+  .safe-bottom {
+    padding-bottom: max(12px, env(safe-area-inset-bottom, 12px));
+  }
+  .safe-top {
+    padding-top: max(8px, env(safe-area-inset-top, 8px));
+  }
+
+  /* Smooth touch momentum scrolling for mobile */
+  .touch-scroll {
+    -webkit-overflow-scrolling: touch;
+    scroll-behavior: smooth;
+  }
+
+  /* Hide scrollbars for slick mobile carousels */
+  .scrollbar-none::-webkit-scrollbar,
+  .no-scrollbar::-webkit-scrollbar {
+    display: none;
+  }
+  .scrollbar-none,
+  .no-scrollbar {
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+}

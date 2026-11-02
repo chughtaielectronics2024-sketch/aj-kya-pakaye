@@ -1,0 +1,8 @@
+{
+  "name": "Aj kya pakaye",
+  "description": "Pakistani Daily Meal Planner & Recipe Suggester with Family Diet & Parhez, Seasonal Vegetables, Weekly Calendar, Grocery Budget & Multilingual Support",
+  "requestFramePermissions": [],
+  "majorCapabilities": [
+    "MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"
+  ]
+}
